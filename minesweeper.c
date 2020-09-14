@@ -138,5 +138,6 @@ int main(void)
     free(map[i]);
   }
   free(map);
+
   return (0);
 }
