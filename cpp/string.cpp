@@ -3,13 +3,15 @@
 
 using namespace std;
 
-int main()
+int main(void)
 {
   string name;
+  string age;
 
-  cout << "이름 입력 : ";
-  cin >> name;
+  cout << "Enter your name : ";
+  getline(cin, name);
+  cout << "Enter your age : ";
+  getline(cin, age);
 
-  string message = "안녕하세요, " + name + " 님.";
-  cout << message << endl;
+  cout << "Your name is " + name + ", and you are " + age << endl;
 }
