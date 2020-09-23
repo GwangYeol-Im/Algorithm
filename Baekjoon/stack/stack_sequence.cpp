@@ -1,36 +1,36 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
 int main(void)
 {
-  int n, cur = 0;
+  int n, idx = 0;
+  vector<char> v;
+  stack<int> s;
   cin >> n;
 
-  vector<int> digits(n);
+  int arr[n];
   for (int i = 0; i < n; i++)
+    cin >> arr[i];
+  for (int i = 1; i <= n; i++)
   {
-    cin >> digits[i];
-    if (i > 1 && digits[i] < digits[i - 2] && digits[i] > digits[i - 1])
+    s.push(i);
+    v.push_back('+');
+    while (!s.empty() && s.top() == arr[idx])
     {
-      cout << "NO" << endl;
-      return (0);
+      s.pop();
+      v.push_back('-');
+      idx++;
     }
   }
-  for (int push : digits)
+  if (!s.empty())
   {
-    if (push < cur)
-      cout << "-" << '\n';
-    else
-    {
-      while (cur < push)
-      {
-        cout << '+' << '\n';
-        cur++;
-      }
-      cout << '-' << '\n';
-    }
+    cout << "NO" << endl;
+    return (0);
   }
+  for (int i = 0; i < n * 2; i++)
+    cout << v[i] << '\n';
   return (0);
 }
