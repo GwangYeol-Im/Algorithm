@@ -1,33 +1,31 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
-bool compare(pair<int, int> &a, pair<int, int> &b)
+bool compare(pair<int, int> a, pair<int, int> b)
 {
-  if (a.first < b.first)
-    return true;
-  else if (a.first == b.first)
-    return a.second < b.second ? true : false;
+  if (a.first == b.first)
+    return a.second < b.second;
   else
-    return false;
+    return a.first < b.first;
 }
 
 int main(void)
 {
-  int n;
+  int n, x, y;
+  vector<pair<int, int>> v;
 
   cin >> n;
-  vector<pair<int, int>> v(n);
   for (int i = 0; i < n; i++)
   {
-    cin >> v[i].first >> v[i].second;
+    cin >> x >> y;
+    v.push_back({x, y});
   }
   sort(v.begin(), v.end(), compare);
   for (int i = 0; i < n; i++)
-  {
-    cout << v[i].first << ' ' << v[i].second << endl;
-  }
+    cout << v[i].first << ' ' << v[i].second << '\n';
+
   return (0);
 }
